@@ -42,6 +42,12 @@ pub(crate) fn default_args() -> CefMainArgsWrapper {
 pub(crate) type CefCursorInternal = ::std::os::raw::c_ulong;
 pub(crate) type CefWindowHandle = ::std::os::raw::c_ulong;
 
+impl Into<CefWindowHandle> for ::std::os::raw::c_ulong {
+    fn into(self) -> CefWindowHandle {
+        self
+    }
+}
+
 impl<'a> WindowInfo<'a> {
     pub(crate) fn to_cef(&self) -> cef_window_info_t {
         cef_window_info_t {

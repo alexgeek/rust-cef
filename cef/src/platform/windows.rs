@@ -1,6 +1,6 @@
 use crate::types::string::CefString;
 use crate::WindowInfo;
-use cef_sys::cef_window_info_t;
+use cef_sys::{cef_window_info_t, HWND, HWND__};
 use std::ptr::null_mut;
 
 pub type CefArgs<'a> = cef_sys::HINSTANCE;
@@ -19,7 +19,20 @@ pub(crate) fn default_args() -> CefMainArgsWrapper {
     args_to_cef(null_mut())
 }
 
+pub(crate) struct CefWindowHWND(HWND);
+
 pub(crate) type CefCursorInternal = cef_sys::HCURSOR;
+pub(crate) type CefWindowHandle = CefWindowHWND;
+impl Default for CefWindowHandle {
+    fn default() -> Self {
+        CefWindowHWND(std::ptr::null_mut())
+    }
+}
+impl Into<CefWindowHandle> for HWND {
+    fn into(self) -> CefWindowHandle {
+        CefWindowHWND(self)
+    }
+}
 
 impl<'a> WindowInfo<'a> {
     pub(crate) fn to_cef(&self) -> cef_window_info_t {

@@ -64,6 +64,7 @@ fn main() {
         skip_exist: false,
         buffer_size: 64000, // Default
         copy_inside: true,
+        content_only: false,
         depth: 0,
     };
 

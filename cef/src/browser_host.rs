@@ -56,7 +56,7 @@ impl BrowserHost {
 
     pub fn get_window_handle(&self) -> CefWindowHandle {
         if let Some(func) = self.ptr.as_ref().get_window_handle {
-            unsafe { func(self.ptr.get()) }
+            unsafe { func(self.ptr.get()) }.into()
         } else {
             CefWindowHandle::default()
         }
@@ -64,7 +64,7 @@ impl BrowserHost {
 
     pub fn get_opener_window_handle(&self) -> CefWindowHandle {
         if let Some(func) = self.ptr.as_ref().get_opener_window_handle {
-            unsafe { func(self.ptr.get()) }
+            unsafe { func(self.ptr.get()) }.into()
         } else {
             CefWindowHandle::default()
         }
