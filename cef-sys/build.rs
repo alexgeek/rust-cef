@@ -42,13 +42,13 @@ fn main() {
     if !release_dir.exists() {
         panic!(
             "CEF Release directory ({}) does not exist",
-            release_dir.to_str().unwrap_or_else(|| "")
+            release_dir.to_str().unwrap_or("")
         );
     }
     if !resources_dir.exists() {
         panic!(
             "CEF Resources directory ({}) does not exist",
-            resources_dir.to_str().unwrap_or_else(|| "")
+            resources_dir.to_str().unwrap_or("")
         );
     }
 
@@ -77,5 +77,5 @@ fn main() {
     all_items.append(&mut resources_items.directories);
     all_items.append(&mut resources_items.files);
 
-    fs_extra::copy_items(&all_items, &dest_path, &opts).unwrap();
+    fs_extra::copy_items(&all_items, dest_path, &opts).unwrap();
 }
