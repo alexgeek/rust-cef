@@ -19,7 +19,7 @@ pub(crate) fn default_args() -> CefMainArgsWrapper {
     args_to_cef(null_mut())
 }
 
-pub(crate) struct CefWindowHWND(HWND);
+pub struct CefWindowHWND(HWND);
 
 pub(crate) type CefCursorInternal = cef_sys::HCURSOR;
 pub(crate) type CefWindowHandle = CefWindowHWND;

@@ -96,6 +96,7 @@ pub fn create_browser_sync<TClient: Client>(
             &CefString::from_str(url).into_cef(),
             &settings.to_cef(),
             null_mut(),
+            null_mut(),
         )
     };
     //    Browser::from(res, true)
